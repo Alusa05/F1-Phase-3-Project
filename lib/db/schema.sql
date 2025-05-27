@@ -29,3 +29,4 @@ FOREIGN KEY (driver_id) REFERENCES drivers(id),
 FOREIGN KEY (team_id) REFERENCES teams(id),
 FOREIGN KEY (race_id) REFERENCES races(id)
 );
+ 
