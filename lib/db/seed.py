@@ -18,4 +18,9 @@ def seed_data():
     leclerc.save()
 
     # Create races 
-    
+    monaco_gp = Race("Monaco GP", "Monaco", "2024-05-26")
+    monaco_gp.save()
+
+    # Add race results
+    hamilton.add_race_result(mercedes.id, monaco_gp.id, position=1, points=25)
+    leclerc.add_race_result(ferrari.id, monaco_gp.id, position=2, points=18)
