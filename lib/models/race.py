@@ -33,4 +33,17 @@ class Race:
                 cursor.execute("SELECT * FROM races WHERE location=?", (location,))
                 row = cursor.fetchone()
                 conn.close()
-                if ro
+                if row:
+                    return cls(name=row['name'], date=row['date'], location=row['location'], id=row['id'])
+                return None
+            
+            def participants(self):
+                """Get all drivers who participated in this race."""
+                conn = get_connection()
+                cursor = conn.cursor()
+                cursor.execute("""
+                    SELECT DISTINCT d.* FROM drivers d
+                    JOIN results res ON d.id = res.driver_id
+                               WHERE res.race_id = ?
+                """, (self.id,))
+                return cursor.fetchall()
