@@ -43,3 +43,6 @@ pipenv shell
 
 # Install the package in development mode
 pip install -e
+
+## License
+This project is under the MIT license
