@@ -1,17 +1,17 @@
 import pytest
-from lib.models.driver import Driver
+from lib.models.driver import Driver 
 
 def test_create_and_save_driver():
-    driver = Driver(name="Lewis Hamilton", nationality="British")
+    driver = driver(name="Lewis Hamilton", nationality="British")
     driver.save()
     
     assert driver.id is not None
 
 def test_find_by_id():
-    driver = Driver(name="Max Verstappen", nationality="Dutch")
+    driver = driver(name="Max Verstappen", nationality="Dutch")
     driver.save()
 
-    found = Driver.find_by_id(driver.id)
+    found = driver.find_by_id(driver.id)
     assert found is not None
     assert found.name == "Max Verstappen"
 
@@ -27,7 +27,7 @@ def test_get_races_for_driver():
     monaco_gp.save()
 
     # Add result
-    driver = Driver("George Russell", "British")
+    driver = driver("George Russell", "British")
     driver.save()
     driver.add_race_result(mercedes.id, monaco_gp.id, position=3, points=15)
 
